@@ -1,0 +1,149 @@
+WARNING 2026-03-26 09:15:35,863 log Not Found: /api/v1/
+WARNING 2026-03-26 09:15:35,864 basehttp "GET /api/v1/ HTTP/1.1" 404 3409
+WARNING 2026-03-26 09:15:36,192 log Not Found: /favicon.ico
+WARNING 2026-03-26 09:15:36,193 basehttp "GET /favicon.ico HTTP/1.1" 404 3421
+WARNING 2026-03-26 09:23:23,914 log Bad Request: /api/v1/destinations/
+WARNING 2026-03-26 09:23:23,914 basehttp "POST /api/v1/destinations/ HTTP/1.1" 400 116
+WARNING 2026-03-26 09:23:35,773 log Bad Request: /api/v1/destinations/
+WARNING 2026-03-26 09:23:35,773 basehttp "POST /api/v1/destinations/ HTTP/1.1" 400 116
+WARNING 2026-03-26 09:47:52,908 log Bad Request: /api/v1/destinations/
+WARNING 2026-03-26 09:47:52,908 basehttp "POST /api/v1/destinations/ HTTP/1.1" 400 116
+ERROR 2026-03-26 09:50:53,792 exceptions Unhandled exception: No module named 'python_slugify'
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\destinations\models.py", line 25, in save
+    from python_slugify import slugify
+ModuleNotFoundError: No module named 'python_slugify'
+ERROR 2026-03-26 09:50:53,819 log Internal Server Error: /api/v1/destinations/
+ERROR 2026-03-26 09:50:53,819 basehttp "POST /api/v1/destinations/ HTTP/1.1" 500 70
+WARNING 2026-03-26 09:55:00,203 log Not Found: /favicon.ico
+WARNING 2026-03-26 09:55:00,204 basehttp "GET /favicon.ico HTTP/1.1" 404 3421
+WARNING 2026-03-26 10:00:26,063 log Bad Request: /api/v1/tours/
+WARNING 2026-03-26 10:00:26,063 basehttp "POST /api/v1/tours/ HTTP/1.1" 400 122
+WARNING 2026-03-26 10:02:04,635 log Bad Request: /api/v1/tours/
+WARNING 2026-03-26 10:02:04,637 basehttp "POST /api/v1/tours/ HTTP/1.1" 400 202
+WARNING 2026-03-26 10:02:53,233 log Bad Request: /api/v1/tours/
+WARNING 2026-03-26 10:02:53,233 basehttp "POST /api/v1/tours/ HTTP/1.1" 400 202
+WARNING 2026-03-26 10:03:31,842 log Bad Request: /api/v1/tours/
+WARNING 2026-03-26 10:03:31,842 basehttp "POST /api/v1/tours/ HTTP/1.1" 400 202
+WARNING 2026-03-26 10:06:33,063 log Not Found: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:06:33,063 basehttp "GET /api/v1/availability/schedules/?tour=1&page_size=50 HTTP/1.1" 404 59
+WARNING 2026-03-26 10:07:12,012 log Method Not Allowed: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:07:12,012 basehttp "POST /api/v1/availability/schedules/ HTTP/1.1" 405 127
+WARNING 2026-03-26 10:20:53,141 log Unauthorized: /api/v1/destinations/
+WARNING 2026-03-26 10:20:53,148 log Unauthorized: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:20:53,156 log Unauthorized: /api/v1/tours/tempore-aliquid-num/
+WARNING 2026-03-26 10:20:53,158 basehttp "GET /api/v1/destinations/?page_size=100 HTTP/1.1" 401 281
+WARNING 2026-03-26 10:20:53,158 basehttp "GET /api/v1/tours/tempore-aliquid-num/ HTTP/1.1" 401 281
+WARNING 2026-03-26 10:20:53,159 basehttp "GET /api/v1/availability/schedules/?tour=1&page_size=100 HTTP/1.1" 401 281
+WARNING 2026-03-26 10:20:53,190 log Unauthorized: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:20:53,191 basehttp "GET /api/v1/availability/schedules/?tour=1&page_size=100 HTTP/1.1" 401 281
+WARNING 2026-03-26 10:20:53,311 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-03-26 10:20:53,316 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-03-26 10:20:53,317 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
+WARNING 2026-03-26 10:20:53,317 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
+WARNING 2026-03-26 10:20:53,342 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-03-26 10:20:53,343 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
+WARNING 2026-03-26 10:24:22,801 log Unauthorized: /api/v1/auth/login/
+WARNING 2026-03-26 10:24:22,803 basehttp "POST /api/v1/auth/login/ HTTP/1.1" 401 171
+WARNING 2026-03-26 10:24:22,980 log Unauthorized: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:24:22,980 basehttp "POST /api/v1/availability/schedules/ HTTP/1.1" 401 225
+WARNING 2026-03-26 10:24:29,063 log Unauthorized: /api/v1/auth/login/
+WARNING 2026-03-26 10:24:29,063 basehttp "POST /api/v1/auth/login/ HTTP/1.1" 401 171
+WARNING 2026-03-26 10:24:51,725 log Unauthorized: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:24:51,725 basehttp "POST /api/v1/availability/schedules/ HTTP/1.1" 401 225
+WARNING 2026-03-26 10:24:51,979 log Not Found: /api/v1/availability/schedules//time-slots/
+WARNING 2026-03-26 10:24:51,980 basehttp "POST /api/v1/availability/schedules//time-slots/ HTTP/1.1" 404 5896
+WARNING 2026-03-26 10:25:46,458 log Method Not Allowed: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:25:46,458 basehttp "POST /api/v1/availability/schedules/ HTTP/1.1" 405 127
+WARNING 2026-03-26 10:25:46,825 log Method Not Allowed: /api/v1/availability/schedules/
+WARNING 2026-03-26 10:25:46,825 basehttp "POST /api/v1/availability/schedules/ HTTP/1.1" 405 127
+WARNING 2026-03-26 10:26:57,258 log Not Found: /favicon.ico
+WARNING 2026-03-26 10:26:57,263 basehttp "GET /favicon.ico HTTP/1.1" 404 3421
+ERROR 2026-03-26 10:29:00,653 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+ERROR 2026-03-26 10:29:00,659 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-03-26 10:29:00,659 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
