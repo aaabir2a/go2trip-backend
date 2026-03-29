@@ -147,3 +147,29 @@ DETAIL:  Key (tour_id, day)=(1, 1) already exists.
 
 ERROR 2026-03-26 10:29:00,659 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
 ERROR 2026-03-26 10:29:00,659 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+INFO 2026-03-26 11:22:40,587 views New booking 00e0e394-1be6-4938-ac8e-051dfd0a04c7 by test@example.com
+INFO 2026-03-26 11:24:52,403 views New booking 435f693f-fde9-4f80-9a21-32311c9dbfaf by rahim@example.com
+WARNING 2026-03-26 11:24:52,604 log Bad Request: /api/v1/bookings/
+WARNING 2026-03-26 11:24:52,604 basehttp "POST /api/v1/bookings/ HTTP/1.1" 400 112
+WARNING 2026-03-26 11:27:40,442 log Not Found: /api/v1/tours/italian-cooking-class/
+WARNING 2026-03-26 11:27:40,443 basehttp "GET /api/v1/tours/italian-cooking-class/ HTTP/1.1" 404 135
+WARNING 2026-03-26 11:30:25,407 log Not Found: /api/v1/tours/wine-tasting-tuscany/
+WARNING 2026-03-26 11:30:25,407 basehttp "GET /api/v1/tours/wine-tasting-tuscany/ HTTP/1.1" 404 135
+WARNING 2026-03-26 11:30:40,821 log Unauthorized: /api/v1/destinations/
+WARNING 2026-03-26 11:30:40,828 log Unauthorized: /api/v1/tours/tempore-aliquid-num/
+WARNING 2026-03-26 11:30:40,829 basehttp "GET /api/v1/destinations/?page_size=100 HTTP/1.1" 401 281
+WARNING 2026-03-26 11:30:40,829 basehttp "GET /api/v1/tours/tempore-aliquid-num/ HTTP/1.1" 401 281
+WARNING 2026-03-26 13:00:52,715 log Unauthorized: /api/v1/destinations/
+WARNING 2026-03-26 13:00:52,720 log Unauthorized: /api/v1/tours/tempore-aliquid-num/
+WARNING 2026-03-26 13:00:52,721 basehttp "GET /api/v1/destinations/?page_size=100 HTTP/1.1" 401 281
+WARNING 2026-03-26 13:00:52,722 basehttp "GET /api/v1/tours/tempore-aliquid-num/ HTTP/1.1" 401 281
+WARNING 2026-03-26 13:00:52,818 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-03-26 13:00:52,819 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
+WARNING 2026-03-26 13:00:52,916 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-03-26 13:00:52,917 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
+WARNING 2026-03-26 13:05:23,050 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-03-26 13:05:23,051 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-03-26 13:07:07,501 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-03-26 13:07:07,502 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-03-29 10:08:52,461 log Unauthorized: /api/v1/destinations/
+WARNING 2026-03-29 10:08:52,461 basehttp "GET /api/v1/destinations/?page_size=100 HTTP/1.1" 401 281

@@ -9,7 +9,7 @@ class DestinationViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     lookup_field = 'slug'
     search_fields = ['name', 'country', 'location']
-    filterset_fields = ['country']
+    filterset_fields = ['country', 'is_featured', 'is_active']
     ordering_fields = ['name', 'created_at']
 
     def get_queryset(self):

@@ -1,7 +1,7 @@
 import logging
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from utils.permissions import IsAdmin, IsOwnerOrAdmin
 from utils.responses import success_response, created_response, error_response
 from .models import Booking
@@ -11,7 +11,12 @@ logger = logging.getLogger('apps')
 
 
 class BookingViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'post', 'patch', 'delete', 'head', 'options']
+
+    def get_permissions(self):
+        if self.action == 'create':
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
     def get_serializer_class(self):
         if self.action == 'create':
@@ -20,6 +25,8 @@ class BookingViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
+        if not user or not user.is_authenticated:
+            return Booking.objects.none()
         qs = Booking.objects.select_related('tour', 'tour__destination', 'time_slot')
         if user.role == 'admin':
             return qs
@@ -29,7 +36,8 @@ class BookingViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         booking = serializer.save()
-        logger.info(f'New booking {booking.reference} by {request.user.email}')
+        name = booking.user.email if booking.user else booking.guest_email
+        logger.info(f'New booking {booking.reference} by {name}')
         return created_response(
             data=BookingSerializer(booking).data,
             message='Booking created successfully.',

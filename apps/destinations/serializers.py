@@ -7,7 +7,7 @@ class DestinationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Destination
-        fields = ['id', 'name', 'slug', 'description', 'country', 'location', 'thumbnail', 'tour_count', 'is_active', 'created_at']
+        fields = ['id', 'name', 'slug', 'description', 'country', 'location', 'thumbnail', 'tour_count', 'is_active', 'is_featured', 'created_at']
         read_only_fields = ['id', 'slug', 'created_at']
 
     def get_tour_count(self, obj):

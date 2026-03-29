@@ -20,7 +20,12 @@ class Booking(models.Model):
     ]
 
     reference = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
-    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='bookings')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='bookings', null=True, blank=True)
+    # Guest info (used when user is not logged in)
+    guest_name = models.CharField(max_length=200, blank=True)
+    guest_email = models.EmailField(blank=True)
+    guest_phone = models.CharField(max_length=20, blank=True)
+
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT, related_name='bookings')
     time_slot = models.ForeignKey(TimeSlot, on_delete=models.PROTECT, related_name='bookings')
     adult_count = models.PositiveIntegerField(default=1)
@@ -45,7 +50,8 @@ class Booking(models.Model):
         ]
 
     def __str__(self):
-        return f'Booking #{self.reference} — {self.tour.title}'
+        name = self.user.email if self.user else self.guest_email
+        return f'Booking #{self.reference} — {self.tour.title} ({name})'
 
     def calculate_total(self):
         tour = self.tour
@@ -55,6 +61,14 @@ class Booking(models.Model):
             tour.price_infant * self.infant_count
         )
         return total
+
+    @property
+    def contact_name(self):
+        return self.user.get_full_name() if self.user else self.guest_name
+
+    @property
+    def contact_email(self):
+        return self.user.email if self.user else self.guest_email
 
     @property
     def total_people(self):

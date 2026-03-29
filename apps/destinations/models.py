@@ -7,8 +7,9 @@ class Destination(models.Model):
     description = models.TextField()
     country = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
-    thumbnail = models.ImageField(upload_to='destinations/thumbnails/')
+    thumbnail = models.ImageField(upload_to='destinations/thumbnails/', blank=True, null=True)
     is_active = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
