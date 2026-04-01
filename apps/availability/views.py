@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
+from django.db.models import ProtectedError
 from utils.permissions import IsAdmin
 from utils.responses import success_response, error_response
 from apps.tours.models import Tour
@@ -47,6 +48,18 @@ class ScheduleManageViewSet(viewsets.ModelViewSet):
             qs = qs.filter(tour_id=tour_id)
         return qs
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        try:
+            instance.delete()
+        except ProtectedError:
+            return error_response(
+                'Cannot delete this schedule — it has confirmed bookings. '
+                'Cancel the bookings first, or edit the time slot capacities instead.',
+                status_code=409
+            )
+        return success_response(message='Schedule deleted.')
+
     @action(detail=True, methods=['post'], url_path='time-slots')
     def add_time_slot(self, request, pk=None):
         schedule = self.get_object()
@@ -54,6 +67,34 @@ class ScheduleManageViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save(schedule=schedule)
         return success_response(data=serializer.data, message='Time slot added.')
+
+    @action(detail=True, methods=['patch'], url_path='time-slots/(?P<slot_pk>[^/.]+)')
+    def update_time_slot(self, request, pk=None, slot_pk=None):
+        schedule = self.get_object()
+        try:
+            slot = schedule.time_slots.get(pk=slot_pk)
+        except TimeSlot.DoesNotExist:
+            return error_response('Time slot not found.', status_code=404)
+        serializer = TimeSlotSerializer(slot, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return success_response(data=serializer.data, message='Time slot updated.')
+
+    @action(detail=True, methods=['delete'], url_path='time-slots/(?P<slot_pk>[^/.]+)/delete')
+    def delete_time_slot(self, request, pk=None, slot_pk=None):
+        schedule = self.get_object()
+        try:
+            slot = schedule.time_slots.get(pk=slot_pk)
+        except TimeSlot.DoesNotExist:
+            return error_response('Time slot not found.', status_code=404)
+        try:
+            slot.delete()
+        except ProtectedError:
+            return error_response(
+                'Cannot delete this time slot — it has active bookings.',
+                status_code=409
+            )
+        return success_response(message='Time slot deleted.')
 
     @action(detail=False, methods=['post'], url_path='block-date')
     def block_date(self, request):

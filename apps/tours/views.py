@@ -46,6 +46,24 @@ class TourViewSet(viewsets.ModelViewSet):
         serializer.save(tour=tour)
         return created_response(data=serializer.data, message='Itinerary item added.')
 
+    @action(detail=True, methods=['patch', 'delete'],
+            url_path='itinerary/(?P<item_id>[0-9]+)',
+            permission_classes=[IsAdmin])
+    def itinerary_item(self, request, slug=None, item_id=None):
+        tour = self.get_object()
+        try:
+            item = Itinerary.objects.get(pk=item_id, tour=tour)
+        except Itinerary.DoesNotExist:
+            from utils.responses import error_response
+            return error_response('Itinerary item not found.', status_code=404)
+        if request.method == 'DELETE':
+            item.delete()
+            return success_response(message='Itinerary item deleted.')
+        serializer = ItinerarySerializer(item, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return success_response(data=serializer.data, message='Itinerary item updated.')
+
     @action(detail=True, methods=['post', 'put'], permission_classes=[IsAdmin], url_path='cancellation-policy')
     def cancellation_policy(self, request, slug=None):
         tour = self.get_object()

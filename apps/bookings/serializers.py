@@ -41,11 +41,34 @@ class BookingCreateSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        from apps.authentication.models import User
         request = self.context.get('request')
         tour = validated_data['tour']
         booking = Booking(**validated_data)
         if request and request.user and request.user.is_authenticated:
             booking.user = request.user
+        else:
+            # Auto-create a customer account from guest info
+            guest_email = validated_data.get('guest_email', '').strip()
+            guest_name  = validated_data.get('guest_name', '').strip()
+            guest_phone = validated_data.get('guest_phone', '').strip()
+            if guest_email:
+                parts = guest_name.split(None, 1)
+                first = parts[0] if parts else guest_name
+                last  = parts[1] if len(parts) > 1 else ''
+                user, created = User.objects.get_or_create(
+                    email=guest_email,
+                    defaults={
+                        'first_name': first,
+                        'last_name':  last,
+                        'phone':      guest_phone,
+                        'role':       'customer',
+                    }
+                )
+                if created:
+                    user.set_password(guest_name)   # password = full name
+                    user.save()
+                booking.user = user
         booking.currency = tour.currency
         booking.total_price = booking.calculate_total()
         booking.save()
