@@ -173,3 +173,776 @@ WARNING 2026-03-26 13:07:07,501 log Not Found: /api/v1/destinations/undefined/
 WARNING 2026-03-26 13:07:07,502 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
 WARNING 2026-03-29 10:08:52,461 log Unauthorized: /api/v1/destinations/
 WARNING 2026-03-29 10:08:52,461 basehttp "GET /api/v1/destinations/?page_size=100 HTTP/1.1" 401 281
+WARNING 2026-04-02 00:32:28,143 log Not Found: /
+WARNING 2026-04-02 00:32:28,144 basehttp "GET / HTTP/1.1" 404 3370
+WARNING 2026-04-02 00:32:28,389 log Not Found: /favicon.ico
+WARNING 2026-04-02 00:32:28,389 basehttp "GET /favicon.ico HTTP/1.1" 404 3421
+WARNING 2026-04-02 00:32:42,248 log Unauthorized: /api/v1/auth/login/
+WARNING 2026-04-02 00:32:42,248 basehttp "POST /api/v1/auth/login/ HTTP/1.1" 401 171
+WARNING 2026-04-02 00:32:42,261 log Bad Request: /api/v1/auth/token/refresh/
+WARNING 2026-04-02 00:32:42,261 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 400 119
+WARNING 2026-04-02 00:35:25,298 log Unauthorized: /api/v1/auth/login/
+WARNING 2026-04-02 00:35:25,298 basehttp "POST /api/v1/auth/login/ HTTP/1.1" 401 171
+WARNING 2026-04-02 00:35:25,309 log Bad Request: /api/v1/auth/token/refresh/
+WARNING 2026-04-02 00:35:25,309 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 400 119
+WARNING 2026-04-02 00:40:13,123 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-04-02 00:40:13,123 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-04-02 00:40:25,155 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-04-02 00:40:25,155 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-04-02 00:51:10,302 log Not Found: /api/v1/availability/cox-bazar-full-day-tour/
+WARNING 2026-04-02 00:51:10,302 basehttp "GET /api/v1/availability/cox-bazar-full-day-tour/?year=2026&month=4 HTTP/1.1" 404 59
+ERROR 2026-04-02 00:51:29,057 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+ERROR 2026-04-02 00:51:29,174 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 00:51:29,174 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+WARNING 2026-04-02 00:57:06,546 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-04-02 00:57:06,546 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-04-02 00:58:37,366 log Not Found: /api/v1/tours/venice/
+WARNING 2026-04-02 00:58:37,369 basehttp "GET /api/v1/tours/venice/ HTTP/1.1" 404 135
+WARNING 2026-04-02 00:58:40,106 log Not Found: /api/v1/availability/venice/
+WARNING 2026-04-02 00:58:40,107 basehttp "GET /api/v1/availability/venice/?year=2026&month=4 HTTP/1.1" 404 59
+WARNING 2026-04-02 00:58:40,346 log Not Found: /api/v1/availability/venice/
+WARNING 2026-04-02 00:58:40,347 basehttp "GET /api/v1/availability/venice/?year=2026&month=4 HTTP/1.1" 404 59
+WARNING 2026-04-02 00:58:40,471 log Not Found: /api/v1/availability/venice/
+WARNING 2026-04-02 00:58:40,472 basehttp "GET /api/v1/availability/venice/?year=2026&month=4 HTTP/1.1" 404 59
+WARNING 2026-04-02 00:58:40,602 log Not Found: /api/v1/availability/venice/
+WARNING 2026-04-02 00:58:40,602 basehttp "GET /api/v1/availability/venice/?year=2026&month=4 HTTP/1.1" 404 59
+ERROR 2026-04-02 01:06:47,663 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+ERROR 2026-04-02 01:06:47,671 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:06:47,671 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:06:47,789 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+
+ERROR 2026-04-02 01:06:47,793 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:06:47,793 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:06:47,892 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+
+ERROR 2026-04-02 01:06:47,894 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:06:47,894 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+WARNING 2026-04-02 01:06:48,989 log Bad Request: /api/v1/availability/schedules/
+WARNING 2026-04-02 01:06:48,989 basehttp "POST /api/v1/availability/schedules/ HTTP/1.1" 400 146
+INFO 2026-04-02 01:08:22,450 views New booking c098a170-212f-4b91-8dfa-4d1d702878da by aaabir2a@gmail.com
+INFO 2026-04-02 01:19:14,369 views New booking 0dce9160-d0a4-49ea-8a76-bcd4d334db98 by huru@mailinator.com
+ERROR 2026-04-02 01:21:16,566 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+ERROR 2026-04-02 01:21:16,573 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:21:16,573 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:21:16,677 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+
+ERROR 2026-04-02 01:21:16,687 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:21:16,687 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:21:16,792 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+
+ERROR 2026-04-02 01:21:16,793 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:21:16,793 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:28:22,545 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 1) already exists.
+
+ERROR 2026-04-02 01:28:22,557 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:28:22,558 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:28:22,672 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 2) already exists.
+
+ERROR 2026-04-02 01:28:22,677 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:28:22,679 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+ERROR 2026-04-02 01:28:22,808 exceptions Unhandled exception: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\apps\tours\views.py", line 46, in itinerary
+    serializer.save(tour=tour)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "tour_itinerary_tour_id_day_e80d3921_uniq"
+DETAIL:  Key (tour_id, day)=(1, 3) already exists.
+
+ERROR 2026-04-02 01:28:22,811 log Internal Server Error: /api/v1/tours/tempore-aliquid-num/itinerary/
+ERROR 2026-04-02 01:28:22,811 basehttp "POST /api/v1/tours/tempore-aliquid-num/itinerary/ HTTP/1.1" 500 70
+WARNING 2026-04-02 01:37:18,418 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-04-02 01:37:18,418 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-04-02 01:38:26,515 log Bad Request: /api/v1/bookings/
+WARNING 2026-04-02 01:38:26,517 basehttp "POST /api/v1/bookings/ HTTP/1.1" 400 124
+WARNING 2026-04-02 01:43:11,270 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-04-02 01:43:11,271 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+WARNING 2026-04-02 01:43:49,289 log Not Found: /api/v1/destinations/undefined/
+WARNING 2026-04-02 01:43:49,289 basehttp "GET /api/v1/destinations/undefined/ HTTP/1.1" 404 149
+INFO 2026-04-02 01:45:42,221 views New booking 2e8e8cc2-6814-4ef6-b1f2-9b981fd5f82d by aaabir2a@gmail.com
+ERROR 2026-04-02 01:47:59,872 exceptions Unhandled exception: ("Cannot delete some instances of model 'TourSchedule' because they are referenced through protected foreign keys: 'TimeSlot.schedule'.", {<Booking: Booking #c098a170-212f-4b91-8dfa-4d1d702878da — Tempore aliquid num (aaabir2a@gmail.com)>, <Booking: Booking #0dce9160-d0a4-49ea-8a76-bcd4d334db98 — Tempore aliquid num (huru@mailinator.com)>})
+Traceback (most recent call last):
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\mixins.py", line 91, in destroy
+    self.perform_destroy(instance)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\rest_framework\mixins.py", line 95, in perform_destroy
+    instance.delete()
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\base.py", line 1178, in delete
+    collector.collect([self], keep_parents=keep_parents)
+  File "E:\DreamProjects\vercel\go2trip-backend\venv\Lib\site-packages\django\db\models\deletion.py", line 355, in collect
+    raise ProtectedError(
+django.db.models.deletion.ProtectedError: ("Cannot delete some instances of model 'TourSchedule' because they are referenced through protected foreign keys: 'TimeSlot.schedule'.", {<Booking: Booking #c098a170-212f-4b91-8dfa-4d1d702878da — Tempore aliquid num (aaabir2a@gmail.com)>, <Booking: Booking #0dce9160-d0a4-49ea-8a76-bcd4d334db98 — Tempore aliquid num (huru@mailinator.com)>})
+ERROR 2026-04-02 01:47:59,892 log Internal Server Error: /api/v1/availability/schedules/30/
+ERROR 2026-04-02 01:47:59,892 basehttp "DELETE /api/v1/availability/schedules/30/ HTTP/1.1" 500 70
+WARNING 2026-04-02 01:52:19,792 log Conflict: /api/v1/availability/schedules/32/
+WARNING 2026-04-02 01:52:19,792 basehttp "DELETE /api/v1/availability/schedules/32/ HTTP/1.1" 409 171
+WARNING 2026-04-02 01:55:49,129 log Conflict: /api/v1/availability/schedules/32/
+WARNING 2026-04-02 01:55:49,130 basehttp "DELETE /api/v1/availability/schedules/32/ HTTP/1.1" 409 171
+WARNING 2026-04-02 01:56:20,164 log Conflict: /api/v1/availability/schedules/32/
+WARNING 2026-04-02 01:56:20,164 basehttp "DELETE /api/v1/availability/schedules/32/ HTTP/1.1" 409 171
+WARNING 2026-04-02 01:57:16,583 log Unauthorized: /api/v1/destinations/
+WARNING 2026-04-02 01:57:16,587 log Unauthorized: /api/v1/tours/tempore-aliquid-num/
+WARNING 2026-04-02 01:57:16,588 basehttp "GET /api/v1/destinations/?page_size=100 HTTP/1.1" 401 281
+WARNING 2026-04-02 01:57:16,588 basehttp "GET /api/v1/tours/tempore-aliquid-num/ HTTP/1.1" 401 281
+WARNING 2026-04-02 01:57:16,825 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-04-02 01:57:16,826 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
+WARNING 2026-04-02 02:05:02,943 log Conflict: /api/v1/availability/schedules/32/
+WARNING 2026-04-02 02:05:02,943 basehttp "DELETE /api/v1/availability/schedules/32/ HTTP/1.1" 409 171
