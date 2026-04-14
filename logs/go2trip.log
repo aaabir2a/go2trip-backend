@@ -946,3 +946,35 @@ WARNING 2026-04-02 01:57:16,825 log Unauthorized: /api/v1/auth/token/refresh/
 WARNING 2026-04-02 01:57:16,826 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 136
 WARNING 2026-04-02 02:05:02,943 log Conflict: /api/v1/availability/schedules/32/
 WARNING 2026-04-02 02:05:02,943 basehttp "DELETE /api/v1/availability/schedules/32/ HTTP/1.1" 409 171
+WARNING 2026-04-14 09:25:34,526 log Not Found: /api/v1/
+WARNING 2026-04-14 09:25:34,526 basehttp "GET /api/v1/ HTTP/1.1" 404 3409
+WARNING 2026-04-14 09:27:01,280 log Unauthorized: /api/v1/bookings/
+WARNING 2026-04-14 09:27:01,284 log Unauthorized: /api/v1/tours/
+WARNING 2026-04-14 09:27:01,286 log Unauthorized: /api/v1/destinations/
+WARNING 2026-04-14 09:27:01,288 log Unauthorized: /api/v1/auth/users/
+WARNING 2026-04-14 09:27:01,288 basehttp "GET /api/v1/bookings/?page_size=100 HTTP/1.1" 401 281
+WARNING 2026-04-14 09:27:01,290 basehttp "GET /api/v1/destinations/?page_size=1 HTTP/1.1" 401 281
+WARNING 2026-04-14 09:27:01,290 basehttp "GET /api/v1/tours/?page_size=1 HTTP/1.1" 401 281
+WARNING 2026-04-14 09:27:01,291 basehttp "GET /api/v1/auth/users/?page_size=1 HTTP/1.1" 401 281
+WARNING 2026-04-14 09:27:01,310 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-04-14 09:27:01,311 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-04-14 09:27:01,313 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-04-14 09:27:01,315 log Unauthorized: /api/v1/auth/token/refresh/
+WARNING 2026-04-14 09:27:01,315 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 150
+WARNING 2026-04-14 09:27:01,316 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 150
+WARNING 2026-04-14 09:27:01,316 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 150
+WARNING 2026-04-14 09:27:01,317 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 401 150
+WARNING 2026-04-14 09:28:12,181 log Unauthorized: /api/v1/auth/login/
+WARNING 2026-04-14 09:28:12,182 basehttp "POST /api/v1/auth/login/ HTTP/1.1" 401 171
+WARNING 2026-04-14 09:28:12,193 log Bad Request: /api/v1/auth/token/refresh/
+WARNING 2026-04-14 09:28:12,193 basehttp "POST /api/v1/auth/token/refresh/ HTTP/1.1" 400 137
+WARNING 2026-04-14 09:29:27,533 log Not Found: /
+WARNING 2026-04-14 09:29:27,533 basehttp "GET / HTTP/1.1" 404 3370
+WARNING 2026-04-14 09:29:27,702 log Not Found: /favicon.ico
+WARNING 2026-04-14 09:29:27,703 basehttp "GET /favicon.ico HTTP/1.1" 404 3421
+WARNING 2026-04-14 09:31:59,832 log Not Found: /api/v1
+WARNING 2026-04-14 09:31:59,832 basehttp "GET /api/v1 HTTP/1.1" 404 3406
+WARNING 2026-04-14 09:32:00,003 log Not Found: /favicon.ico
+WARNING 2026-04-14 09:32:00,004 basehttp "GET /favicon.ico HTTP/1.1" 404 3421
+WARNING 2026-04-14 09:32:14,857 log Not Found: /api/v1/auth
+WARNING 2026-04-14 09:32:14,858 basehttp "GET /api/v1/auth HTTP/1.1" 404 3421

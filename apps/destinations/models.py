@@ -1,5 +1,10 @@
 from django.db import models
 
+DESTINATION_TYPE_CHOICES = [
+    ('domestic', 'Domestic'),
+    ('international', 'International'),
+]
+
 
 class Destination(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -8,6 +13,12 @@ class Destination(models.Model):
     country = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
     thumbnail = models.ImageField(upload_to='destinations/thumbnails/', blank=True, null=True)
+    destination_type = models.CharField(
+        max_length=15,
+        choices=DESTINATION_TYPE_CHOICES,
+        default='domestic',
+        db_index=True,
+    )
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
